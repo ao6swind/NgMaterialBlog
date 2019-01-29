@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+
+$bg-color-1: map-get($mat-brown, 100);
+$bg-color-2: map-get($mat-brown, 800);
+$bg-color-3: map-get($mat-brown, 600);
+
+$ft-color-1: map-get(map-get($mat-brown, contrast), 100);
+$ft-color-2: map-get(map-get($mat-brown, contrast), 800);
+$ft-color-3: map-get(map-get($mat-brown, contrast), 600);

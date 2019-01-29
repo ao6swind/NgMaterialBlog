@@ -1,0 +1,43 @@
+<app-loading [isLoading]="isLoading"></app-loading>
+<div *ngIf="!isLoading">
+    <a mat-flat-button color="primary" routerLink="/manage/articles">
+        <i class="material-icons">list</i>
+        <span>List</span>
+    </a>
+    <mat-tab-group>
+        <mat-tab label="Article">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <mat-form-field>
+                    <input matInput 
+                        placeholder="Place enter article title" 
+                        formControlName="title" 
+                        [(ngModel)]="article.title">
+                </mat-form-field>
+            
+                <mat-form-field>
+                    <input matInput 
+                        placeholder="Choose a public date" 
+                        [matDatepicker]="picker"
+                        formControlName="publicDate" 
+                        [(ngModel)]="article.publicDate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            
+                <ck-editor 
+                    formControlName="content" 
+                    [(ngModel)]="article.content"
+                    skin="moono-lisa" 
+                    [fullPage]="true"></ck-editor>
+                <br />
+                <button mat-flat-button color="primary">
+                    <i class="material-icons">save</i>
+                    <span>Save</span>
+                </button>
+            </form>
+        </mat-tab>
+        <mat-tab label="Json">
+            <pre>{{ article | json }}</pre>
+        </mat-tab>
+    </mat-tab-group>
+</div>

@@ -1,0 +1,43 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$bg-color-1: map-get($mat-teal, 100);
+$bg-color-2: map-get($mat-teal, 800);
+$bg-color-3: map-get($mat-teal, 600);
+
+$ft-color-1: map-get(map-get($mat-teal, contrast), 100);
+$ft-color-2: map-get(map-get($mat-teal, contrast), 800);
+$ft-color-3: map-get(map-get($mat-teal, contrast), 600);
+
+$homepage-primary: mat-palette($mat-teal);
+$homepage-accent: mat-palette($mat-pink, A200, A100, A400);
+$homepage-warn: mat-palette($mat-red);
+
+$homepage-theme: mat-light-theme($homepage-primary, $homepage-accent, $homepage-warn);
+.homepage-theme{
+    @include angular-material-theme($homepage-theme);
+}
+
+$bg-color-1: map-get($mat-brown, 100);
+$bg-color-2: map-get($mat-brown, 800);
+$bg-color-3: map-get($mat-brown, 600);
+
+$ft-color-1: map-get(map-get($mat-brown, contrast), 100);
+$ft-color-2: map-get(map-get($mat-brown, contrast), 800);
+$ft-color-3: map-get(map-get($mat-brown, contrast), 600);
+
+$manage-primary: mat-palette($mat-brown);
+$manage-accent: mat-palette($mat-green, 800);
+$manage-warn: mat-palette($mat-red, 900);
+$manage-theme: mat-light-theme($manage-primary, $manage-accent, $manage-warn);
+
+.manage-theme {
+    @include angular-material-theme($manage-theme); 
+}
+
+*{ margin: 0; padding: 0; }
+table, form { width: 100%; margin-top: 1rem;  }
+html, body { height: 101%; }
+body { font-family: Roboto, "Helvetica Neue", sans-serif; }
+mat-form-field{ width: 100%; }
+.material-icons{ margin-right: 0.25rem; }

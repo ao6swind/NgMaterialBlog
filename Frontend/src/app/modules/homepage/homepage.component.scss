@@ -1,0 +1,22 @@
+@import "./src/scss/homepage/variable";
+
+div{
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    app-header{
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+    section{
+        background-color: $bg-color-1;
+        color: $ft-color-1;
+        padding: 1rem;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+    app-footer{
+        grid-row-start: 3;
+        grid-row-end: 3;
+    }
+}
