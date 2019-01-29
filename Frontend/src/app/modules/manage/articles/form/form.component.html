@@ -13,7 +13,7 @@
                         formControlName="title" 
                         [(ngModel)]="article.title">
                 </mat-form-field>
-            
+
                 <mat-form-field>
                     <input matInput 
                         placeholder="Choose a public date" 
@@ -25,9 +25,10 @@
                 </mat-form-field>
             
                 <ck-editor 
+                    skin="moono-lisa" 
                     formControlName="content" 
                     [(ngModel)]="article.content"
-                    skin="moono-lisa" 
+                    [config]="{filebrowserImageUploadUrl:'https://localhost:5001/api/manage/files'}"
                     [fullPage]="true"></ck-editor>
                 <br />
                 <button mat-flat-button color="primary">

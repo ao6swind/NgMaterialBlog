@@ -25,7 +25,7 @@ namespace Backend.Homepage.Controllers
         {
             return Ok(new {
                 articles = _context.Articles
-                    .Where(x => x.PublicDate >= DateTime.Now)
+                    .Where(x => x.PublicDate <= DateTime.Now)
                     .Skip((page - 1) * size)
                     .Take(size)
                     .OrderByDescending(x => x.Id)

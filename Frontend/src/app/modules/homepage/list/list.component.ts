@@ -8,7 +8,7 @@ import { DataService } from 'src/app/service/data.service';
 })
 export class ListComponent implements OnInit {
 
-  resource: string = "manage/articles";
+  resource: string = "homepage/articles";
   dataLength: number;
   dataSource: any;
   isLoading: boolean = true;

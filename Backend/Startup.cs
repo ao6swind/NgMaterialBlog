@@ -33,7 +33,6 @@ namespace Backend
             services.AddCors(options => {
                 options.AddPolicy("AllowLocalhost", policy=>{
                     policy
-                        .WithOrigins("http://localhost:4200")
                         .AllowAnyOrigin()
                         .AllowAnyHeader()
                         .AllowAnyMethod();
