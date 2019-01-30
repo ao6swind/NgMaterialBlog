@@ -33,6 +33,7 @@ namespace Backend
             services.AddCors(options => {
                 options.AddPolicy("AllowLocalhost", policy=>{
                     policy
+                        .WithOrigins("http://localhost:4200")
                         .AllowAnyOrigin()
                         .AllowAnyHeader()
                         .AllowAnyMethod();
@@ -51,6 +52,9 @@ namespace Backend
             {
                 app.UseHsts();
             }
+            // 支援靜態檔案顯示
+            app.UseFileServer();
+            // 解決同源
             app.UseCors("AllowLocalhost");
             app.UseHttpsRedirection();
             app.UseMvc();

@@ -24,7 +24,7 @@ namespace Backend.Manage.Controllers
         public IActionResult List(int page, int size)
         {
             // 模擬長時間的載入
-            System.Threading.Tasks.Task.Delay(3000).Wait();
+            System.Threading.Tasks.Task.Delay(1000).Wait();
             return Ok(new {
                 articles = _context.Articles
                     .Skip((page - 1) * size)
@@ -40,7 +40,7 @@ namespace Backend.Manage.Controllers
         public async Task<IActionResult> Find([FromRoute] int id)
         {
             // 模擬長時間的載入
-            System.Threading.Tasks.Task.Delay(3000).Wait();
+            System.Threading.Tasks.Task.Delay(1000).Wait();
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -61,7 +61,7 @@ namespace Backend.Manage.Controllers
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] Article article)
         {
             // 模擬長時間的載入
-            System.Threading.Tasks.Task.Delay(3000).Wait();
+            System.Threading.Tasks.Task.Delay(1000).Wait();
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -98,7 +98,7 @@ namespace Backend.Manage.Controllers
         public async Task<IActionResult> Create([FromBody] Article article)
         {
             // 模擬長時間的載入
-            System.Threading.Tasks.Task.Delay(3000).Wait();
+            System.Threading.Tasks.Task.Delay(1000).Wait();
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -116,7 +116,7 @@ namespace Backend.Manage.Controllers
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             // 模擬長時間的載入
-            System.Threading.Tasks.Task.Delay(3000).Wait();
+            System.Threading.Tasks.Task.Delay(1000).Wait();
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
