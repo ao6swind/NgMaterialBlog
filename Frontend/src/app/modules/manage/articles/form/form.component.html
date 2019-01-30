@@ -24,12 +24,11 @@
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
             
-                <ck-editor 
-                    skin="moono-lisa" 
+                <ck-editor
+                    skin="moono-lisa"
                     formControlName="content" 
-                    [(ngModel)]="article.content"
                     [config]="{filebrowserImageUploadUrl:'https://localhost:5001/api/manage/files'}"
-                    [fullPage]="true"></ck-editor>
+                    [(ngModel)]="article.content"></ck-editor>
                 <br />
                 <button mat-flat-button color="primary">
                     <i class="material-icons">save</i>

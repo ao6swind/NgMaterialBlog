@@ -24,7 +24,7 @@ namespace Backend.Manage.Controllers
             string fileName = Guid.NewGuid() + Path.GetExtension(upload.FileName).ToLower();
             string filePath = Path.Combine(
                 Directory.GetCurrentDirectory(), 
-                "wwwroot/images",
+                "wwwroot/images/upload",
                 fileName
             );
 
@@ -32,10 +32,10 @@ namespace Backend.Manage.Controllers
             {
                 upload.CopyTo(stream);
             }
-            string imgUrl = Url.Content($"~/images/{fileName}");
+            string imgUrl = Url.Content($"https://localhost:5001/images/upload/{fileName}");
             
-            string result = $"<html><body><script>window.parent.CKEDITOR.tools.callFunction({CKEditorFuncNum}, '{imgUrl}', '{message}');</script></body></html>";
-            return Ok();
+            string result = $"<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction({CKEditorFuncNum}, '{imgUrl}', '{message}');</script>";
+            return Ok(result);
         }
     }
 }

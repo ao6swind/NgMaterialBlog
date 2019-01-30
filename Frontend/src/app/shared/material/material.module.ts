@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CKEditorModule } from 'ngx-ckeditor';
+
 import { 
   MatButtonModule, 
   MatTableModule, 
@@ -17,6 +17,7 @@ import {
   MatDialogModule,
   MatSnackBarModule
 } from '@angular/material';
+import { CKEditorModule } from 'ngx-ckeditor';
 import { ConfirmDeleteComponent } from 'src/app/partials/manage/confirm-delete/confirm-delete.component';
 
 @NgModule({
@@ -29,7 +30,7 @@ import { ConfirmDeleteComponent } from 'src/app/partials/manage/confirm-delete/c
   imports: [
     FormsModule, 
     ReactiveFormsModule,
-    CKEditorModule,
+    CKEditorModule ,
     MatButtonModule,
     MatTableModule,
     MatFormFieldModule,
