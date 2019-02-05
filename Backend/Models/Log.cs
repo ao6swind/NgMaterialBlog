@@ -10,13 +10,13 @@ namespace Backend.Models
         public string Device { get; set; }
         public string System { get; set; }
         public string Browser { get; set; }
-        public Action Action { get; set; }
+        public LogAction Action { get; set; }
         public string Target { get; set; }
         public string Data { get; set; }
         public DateTime ActionTime { get; set; }
     }
 
-    public enum Action 
+    public enum LogAction 
     {
         Create,
         Update,

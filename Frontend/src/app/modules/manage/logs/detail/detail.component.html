@@ -1,0 +1,46 @@
+<app-loading *ngIf="isLoading"></app-loading>
+
+<div *ngIf="!isLoading">
+  <a mat-flat-button color="primary" routerLink="/manage/logs">
+    <i class="material-icons">list</i>
+    <span>List</span>
+  </a>
+  <table class="mat-table">
+    <thead>
+      <tr class="mat-header-row">
+        <th class="mat-header-cell">User</th>
+        <th class="mat-header-cell">Target</th>
+        <th class="mat-header-cell">Action</th>
+        <th class="mat-header-cell">Action Time</th>
+      </tr>
+      <tr class="mat-row">
+        <td class="mat-cell">{{ log.user }}</td>
+        <td class="mat-cell">{{ log.target }}</td>
+        <td class="mat-cell">{{ log.action }}</td>
+        <td class="mat-cell">{{ log.actionTime }}</td>
+      </tr>
+      <tr class="mat-header-row">
+        <th class="mat-header-cell">Ip Address</th>
+        <th class="mat-header-cell">Device</th>
+        <th class="mat-header-cell">System</th>
+        <th class="mat-header-cell">Browser</th>
+      </tr>
+      <tr class="mat-row">
+        <td class="mat-cell">{{ log.ipAddress }}</td>
+        <td class="mat-cell">{{ log.device }}</td>
+        <td class="mat-cell">{{ log.system }}</td>
+        <td class="mat-cell">{{ log.browser }}</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="mat-header-row">
+        <th class="mat-header-cell">Column</th>
+        <th class="mat-header-cell" colspan="3">Value</th>
+      </tr>
+      <tr class="mat-row" *ngFor="let entry of log.data | keys">
+        <td class="mat-cell">{{ entry.key }}</td>
+        <td class="mat-cell" colspan="3">{{ entry.value }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

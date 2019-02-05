@@ -33,6 +33,11 @@ $manage-theme: mat-light-theme($manage-primary, $manage-accent, $manage-warn);
 
 .manage-theme {
     @include angular-material-theme($manage-theme); 
+
+    th{
+        background-color: map-get($mat-brown, 200);
+        color: red;
+    }
 }
 
 *{ margin: 0; padding: 0; }

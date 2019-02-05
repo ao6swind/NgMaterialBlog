@@ -9,7 +9,8 @@ const routes: Routes = [
     component: ManageComponent,
     children: [
       { path: '', component: DashboardComponent },
-      { path: 'articles', loadChildren: './articles/articles.module#ArticlesModule' }
+      { path: 'articles', loadChildren: './articles/articles.module#ArticlesModule' },
+      { path: 'logs', loadChildren: './logs/logs.module#LogsModule' }
     ]
   }
 ];

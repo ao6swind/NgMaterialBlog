@@ -1,0 +1,49 @@
+<app-loading *ngIf="isLoading"></app-loading>
+
+<div *ngIf="!isLoading">
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="User">
+      <th mat-header-cell *matHeaderCellDef>User</th>
+      <td mat-cell *matCellDef="let element"> {{element.user}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Ip Address">
+      <th mat-header-cell *matHeaderCellDef>Ip Address</th>
+      <td mat-cell *matCellDef="let element"> {{element.ipAddress}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element"> {{element.action}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Target">
+      <th mat-header-cell *matHeaderCellDef>Target</th>
+      <td mat-cell *matCellDef="let element"> {{element.target}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Action Time">
+      <th mat-header-cell *matHeaderCellDef>Action Time</th>
+      <td mat-cell *matCellDef="let element"> {{element.actionTime}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Detail">
+      <th mat-header-cell *matHeaderCellDef>Detail</th>
+      <td mat-cell *matCellDef="let element">
+        <a mat-flat-button color="accent" routerLink="/manage/logs/detail/{{ element.id }}">
+          <i class="material-icons">more_horiz</i>
+          <span>Detail</span>
+        </a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  </table>
+
+  <mat-paginator [length]="dataLength"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageOptions"
+    (page)="onPageChange($event)">
+  </mat-paginator>
+</div>

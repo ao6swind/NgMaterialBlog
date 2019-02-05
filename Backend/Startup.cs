@@ -28,6 +28,7 @@ namespace Backend
         public void ConfigureServices(IServiceCollection services)
         {
             string connection = @"Server=(LocalDb)\MSSQLLocalDB;Database=DbBlog;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddHttpContextAccessor();
             services.AddDbContext<DbBlog>(options => options.UseSqlServer(connection));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddCors(options => {

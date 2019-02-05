@@ -1,6 +1,6 @@
+import { KeysPipe } from './../../pipes/keys.pipe';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { 
   MatButtonModule, 
   MatTableModule, 
@@ -19,10 +19,13 @@ import {
 } from '@angular/material';
 import { CKEditorModule } from 'ngx-ckeditor';
 import { ConfirmDeleteComponent } from 'src/app/partials/manage/confirm-delete/confirm-delete.component';
+import { LoadingComponent } from 'src/app/partials/manage/loading/loading.component';
 
 @NgModule({
   declarations: [
-    ConfirmDeleteComponent
+    ConfirmDeleteComponent,
+    LoadingComponent,
+    KeysPipe
   ],
   entryComponents: [
     ConfirmDeleteComponent
@@ -63,7 +66,9 @@ import { ConfirmDeleteComponent } from 'src/app/partials/manage/confirm-delete/c
     MatCardModule,
     MatTabsModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    LoadingComponent,
+    KeysPipe
   ]
 })
 export class MaterialModule { }
