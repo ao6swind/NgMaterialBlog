@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DataService } from 'src/app/service/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -19,6 +20,7 @@ export class SigninComponent implements OnInit {
   (
     private fb: FormBuilder,
     private http: DataService,
+    private router: Router
   ) 
   { 
     this.form = this.fb.group({
@@ -33,6 +35,7 @@ export class SigninComponent implements OnInit {
   onSubmit(){
     this.http.post("homepage/users/signin", this.user).subscribe(res => {
       localStorage.setItem("token", res["token"]);
+      this.router.navigate(["manage"]);
     });
   }
 }

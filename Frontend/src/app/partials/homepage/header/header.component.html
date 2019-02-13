@@ -1,9 +1,12 @@
 <header>
   <h1 routerLink="/">Blog</h1>
-  <nav>
-    <ul>
-      <li routerLink="/homepage/users/signin">Sign in</li>
-      <li>Sign out</li>
+  <nav [ngSwitch]="authGuard.isAuthed">
+    <ul *ngSwitchCase="false">
+      <li  routerLink="/homepage/users/signin">Sign in</li>
+    </ul>
+    <ul *ngSwitchCase="true">
+      <li routerLink="/manage">Backend</li>
+      <li (click)="signout()">Sign out</li>
     </ul>
   </nav>
 </header>

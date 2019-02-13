@@ -4,5 +4,25 @@ header{
     background-color:$bg-color-2;
     color: $ft-color-2;
     padding: 1rem;
-    cursor: pointer;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    h1{
+        grid-column-start: 1;
+        grid-column-end: 1;
+        display: inline-block;
+        cursor: pointer;
+    }
+    nav{
+        grid-column-start: 2;
+        grid-column-end: 2;
+        align-self: center;
+        ul{
+            list-style: none;
+            li{
+                float: left;
+                padding-left: 1rem;
+                cursor: pointer;
+            }
+        }
+    }
 }
