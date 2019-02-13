@@ -31,9 +31,9 @@ namespace Backend.Manage.Controllers
 
             return Ok(new {
                 logs = _context.Logs
+                    .OrderByDescending(x => x.Id)
                     .Skip((page - 1) * size)
                     .Take(size)
-                    .OrderByDescending(x => x.Id)
                     .ToList(),
                 count = _context.Logs.ToList().Count
             });

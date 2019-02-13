@@ -17,6 +17,7 @@ export class IndexComponent implements OnInit {
   dataLength: number;
   isLoading: boolean = true;
   resource: string = "manage/articles";
+  pageIndex = 0;
   pageStart = 1;
   pageSize = environment.page.size;
   pageOptions = environment.page.options;
@@ -35,8 +36,9 @@ export class IndexComponent implements OnInit {
   }
 
   onPageChange(event){
-    this.pageSize = event["pageSize"];
+    this.pageIndex = event["pageIndex"];
     this.pageStart = event["pageIndex"] + 1;
+    this.pageSize = event["pageSize"];
     this.reloadData();
   }
 

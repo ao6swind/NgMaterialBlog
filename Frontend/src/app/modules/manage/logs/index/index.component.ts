@@ -13,6 +13,7 @@ export class IndexComponent implements OnInit {
   dataLength: number;
   isLoading: boolean = true;
   resource: string = "manage/logs";
+  pageIndex = 0;
   pageStart = 1;
   pageSize = environment.page.size;
   pageOptions = environment.page.options;
@@ -25,6 +26,16 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
   }
 
+  
+  public onPageChange(event){
+    this.pageIndex = event.pageIndex;
+    this.pageStart = event.pageIndex+1;
+    this.pageSize = event.pageSize;
+
+    this.reloadData();
+    console.log(event);
+  }
+
   private reloadData(){
     this.isLoading = true;
     this.http.list(this.resource, this.pageStart, this.pageSize).subscribe(res => {  
@@ -33,4 +44,5 @@ export class IndexComponent implements OnInit {
       this.isLoading = false;
     });
   }
+
 }
