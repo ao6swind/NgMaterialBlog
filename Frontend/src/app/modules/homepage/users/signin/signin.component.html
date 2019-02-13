@@ -1,0 +1,19 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput 
+      placeholder="Place enter your account" 
+      formControlName="account" 
+      [(ngModel)]="user.account">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput 
+      placeholder="Place enter your password" 
+      formControlName="password" 
+      [(ngModel)]="user.password">
+  </mat-form-field>
+  <button mat-flat-button color="primary">
+    <i class="material-icons">exit_to_app</i>
+    <span>Sign in</span>
+  </button>
+  <span>Have an account not yet? <u routerLink="/homepage/users/regist">Clieck here</u> and regist one.</span>
+</form>

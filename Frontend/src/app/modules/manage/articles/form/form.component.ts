@@ -26,7 +26,6 @@ export class FormComponent implements OnInit {
     private snackBar: MatSnackBar
   ) 
   {
-
     if(this.route.routeConfig.path != "create")
     {
       this.isCreateMode = false;

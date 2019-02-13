@@ -31,6 +31,12 @@
         <td class="mat-cell">{{ log.system }}</td>
         <td class="mat-cell">{{ log.browser }}</td>
       </tr>
+      <tr class="mat-header-row">
+        <th class="mat-header-cell" colspan="4">Agent</th>
+      </tr>
+      <tr class="mat-row">
+        <td class="mat-cell" colspan="4">{{ log.agent }}</td>
+      </tr>
     </thead>
     <tbody>
       <tr class="mat-header-row">
@@ -38,7 +44,7 @@
         <th class="mat-header-cell" colspan="3">Value</th>
       </tr>
       <tr class="mat-row" *ngFor="let entry of log.data | keys">
-        <td class="mat-cell">{{ entry.key }}</td>
+        <th class="mat-header-cell">{{ entry.key }}</th>
         <td class="mat-cell" colspan="3">{{ entry.value }}</td>
       </tr>
     </tbody>

@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput 
+        placeholder="Place enter your account" 
+        formControlName="account" 
+        [(ngModel)]="user.account">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput 
+        placeholder="Place enter your password" 
+        formControlName="password" 
+        [(ngModel)]="user.password">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput 
+        placeholder="Place enter your name" 
+        formControlName="name" 
+        [(ngModel)]="user.name">
+    </mat-form-field>
+    <button mat-flat-button color="primary">
+      <i class="material-icons">save</i>
+      <span>Regist</span>
+    </button>
+    <span>Have an account already? <u routerLink="/homepage/users/signin">Clieck here</u> and signin.</span>
+  </form>
+  

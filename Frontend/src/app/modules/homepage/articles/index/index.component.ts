@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/service/data.service';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  selector: 'app-index',
+  templateUrl: './index.component.html',
+  styleUrls: ['./index.component.scss']
 })
-export class ListComponent implements OnInit {
+export class IndexComponent implements OnInit {
 
   resource: string = "homepage/articles";
   dataLength: number;
@@ -30,4 +30,5 @@ export class ListComponent implements OnInit {
       this.isLoading = false;
     });
   }
+
 }

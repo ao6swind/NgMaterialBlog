@@ -30,6 +30,7 @@ namespace Backend.DbContexts
                 Log log = new Log();
                 log.User = "user";
                 log.IpAddress = _context.HttpContext.Connection.RemoteIpAddress.ToString();
+                log.Agent = _context.HttpContext.Request.Headers["User-Agent"].ToString();
                 log.Device = _context.HttpContext.Request.Headers["User-Agent"].ToString();
                 log.System = _context.HttpContext.Request.Headers["User-Agent"].ToString();
                 log.Browser = _context.HttpContext.Request.Headers["User-Agent"].ToString();
@@ -40,9 +41,12 @@ namespace Backend.DbContexts
                 {
                     case EntityState.Added:
                         log.Action = LogAction.Create;
+                        entity.Property("CreatedAt").CurrentValue = DateTime.Now;
+                        entity.Property("UpdatedAt").CurrentValue = DateTime.Now;
                         break;
                     case EntityState.Modified:
                         log.Action = LogAction.Update;
+                        entity.Property("UpdatedAt").CurrentValue = DateTime.Now;
                         break;
                     case EntityState.Deleted:
                         log.Action = LogAction.Delete;

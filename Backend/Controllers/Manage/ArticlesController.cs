@@ -103,8 +103,6 @@ namespace Backend.Manage.Controllers
             {
                 return BadRequest(ModelState);
             }
-            article.CreatedAt = DateTime.Now;
-            article.UpdatedAt = DateTime.Now;
             _context.Articles.Add(article);
             await _context.SaveChangesAsync();
 

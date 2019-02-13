@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Article } from 'src/app/models/article';
 import { DataService } from 'src/app/service/data.service';
 import { ActivatedRoute } from '@angular/router';
-import { Article } from 'src/app/models/article';
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',

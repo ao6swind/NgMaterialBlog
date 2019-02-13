@@ -3,6 +3,7 @@ export class Log
     public id: number;
     public user: string;
     public ipAddress: string;
+    public agent: string;
     public device: string;
     public system: string;
     public action: string;

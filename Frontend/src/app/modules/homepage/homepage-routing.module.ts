@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListComponent } from './list/list.component';
-import { DetailComponent } from './detail/detail.component';
 import { HomepageComponent } from './homepage.component';
 
 const routes: Routes = [
@@ -9,8 +7,8 @@ const routes: Routes = [
     path: '', 
     component: HomepageComponent,
     children: [
-      { path: '', component: ListComponent },
-      { path: 'articles/:id', component: DetailComponent }
+      { path: 'articles', loadChildren: 'src/app/modules/homepage/articles/articles.module#ArticlesModule' },
+      { path: 'users', loadChildren: './users/users.module#UsersModule' },
     ]
   }
 ];

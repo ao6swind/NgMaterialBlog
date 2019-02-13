@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: 'manage', loadChildren: './modules/manage/manage.module#ManageModule' },
-  { path: '', loadChildren: './modules/homepage/homepage.module#HomepageModule' }
+  { path: 'homepage', loadChildren: './modules/homepage/homepage.module#HomepageModule' },
+  { path: '', redirectTo: '/homepage/articles', pathMatch: 'full' },
 ];
 
 @NgModule({

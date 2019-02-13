@@ -18,7 +18,6 @@ export class DataService {
   }
 
   public list(resource: string, page: number = 1, size: number = 10) {
-    console.log(`${this.apiUrl}/${resource}/${page}/${size}`);
     return this.http.get(`${this.apiUrl}/${resource}/${page}/${size}`);
   }
 
@@ -34,4 +33,7 @@ export class DataService {
     return this.http.delete(`${this.apiUrl}/${resource}/${id}`);
   }
   
+  public post(resource: string, data: any) {
+    return this.http.post(`${this.apiUrl}/${resource}`, data);
+  }
 }
