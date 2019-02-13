@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Backend.DbContexts;
+using Backend.Interfaces;
 using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Backend.Manage.Controllers
 {
@@ -14,9 +16,13 @@ namespace Backend.Manage.Controllers
     public class ArticlesController : ControllerBase
     {
         private readonly DbBlog _context;
-        public ArticlesController(DbBlog context)
+        private readonly IConfiguration _config;
+        private readonly IDelayService _delay;
+        public ArticlesController(DbBlog context, IConfiguration config, IDelayService delay)
         {
             _context = context;
+            _config = config;
+            _delay = delay;
         }
 
         // GET: api/Articles/1/10
@@ -24,7 +30,8 @@ namespace Backend.Manage.Controllers
         public IActionResult List(int page, int size)
         {
             // 模擬長時間的載入
-            System.Threading.Tasks.Task.Delay(1000).Wait();
+            _delay.Wait();
+            
             return Ok(new {
                 articles = _context.Articles
                     .Skip((page - 1) * size)
@@ -40,7 +47,8 @@ namespace Backend.Manage.Controllers
         public async Task<IActionResult> Find([FromRoute] int id)
         {
             // 模擬長時間的載入
-            System.Threading.Tasks.Task.Delay(1000).Wait();
+            _delay.Wait();
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -61,7 +69,8 @@ namespace Backend.Manage.Controllers
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] Article article)
         {
             // 模擬長時間的載入
-            System.Threading.Tasks.Task.Delay(1000).Wait();
+            _delay.Wait();
+            
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

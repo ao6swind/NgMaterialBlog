@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Backend.DbContexts;
+using Backend.Interfaces;
 using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,9 +15,11 @@ namespace Backend.Manage.Controllers
     public class LogsController : ControllerBase
     {
         private readonly DbBlog _context;
-        public LogsController(DbBlog context)
+        private readonly IDelayService _delay;
+        public LogsController(DbBlog context, IDelayService delay)
         {
             _context = context;
+            _delay = delay;
         }
 
         // GET: api/Logs/1/10
@@ -24,7 +27,8 @@ namespace Backend.Manage.Controllers
         public IActionResult List(int page, int size)
         {
             // 模擬長時間的載入
-            System.Threading.Tasks.Task.Delay(1000).Wait();
+            _delay.Wait();
+
             return Ok(new {
                 logs = _context.Logs
                     .Skip((page - 1) * size)
@@ -40,7 +44,8 @@ namespace Backend.Manage.Controllers
         public async Task<IActionResult> Find([FromRoute] int id)
         {
             // 模擬長時間的載入
-            System.Threading.Tasks.Task.Delay(1000).Wait();
+            _delay.Wait();
+            
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

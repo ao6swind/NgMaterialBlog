@@ -31,6 +31,8 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit(){
-
+    this.http.post("homepage/users/signin", this.user).subscribe(res => {
+      localStorage.setItem("token", res["token"]);
+    });
   }
 }

@@ -44,7 +44,7 @@ namespace Backend.Homepage.Controllers
             }
 
             var article = await _context.Articles.FindAsync(id);
-
+            
             if (article == null)
             {
                 return NotFound();
