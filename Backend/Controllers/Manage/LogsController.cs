@@ -30,7 +30,7 @@ namespace Backend.Manage.Controllers
             _delay.Wait();
 
             return Ok(new {
-                logs = _context.Logs
+                data = _context.Logs
                     .OrderByDescending(x => x.Id)
                     .Skip((page - 1) * size)
                     .Take(size)

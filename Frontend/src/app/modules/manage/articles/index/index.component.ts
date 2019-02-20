@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/service/data.service';
-import { environment } from '../../../../../environments/environment';
+
 import { MatDialog, MatSnackBar } from '@angular/material';
-import { ConfirmDeleteComponent } from 'src/app/partials/manage/confirm-delete/confirm-delete.component';
+
+import { PageSettings } from 'src/app/common/page-settings';
+import { Article } from 'src/app/models/article';
 
 @Component({
   selector: 'app-index',
@@ -11,60 +13,20 @@ import { ConfirmDeleteComponent } from 'src/app/partials/manage/confirm-delete/c
 })
 
 
-export class IndexComponent implements OnInit {
+export class IndexComponent extends PageSettings<Article> implements OnInit {
   columns: string[] = ['Title', 'Public Date', 'Created At', 'Updated At', 'Actions'];
-  dataSource: any;
-  dataLength: number;
-  isLoading: boolean = true;
-  resource: string = "manage/articles";
-  pageIndex = 0;
-  pageStart = 1;
-  pageSize = environment.page.size;
-  pageOptions = environment.page.options;
 
   constructor
   (
-    private http: DataService,
-    private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private dataService: DataService,
+    private matDialog: MatDialog,
+    private matSnackBar: MatSnackBar
   ) 
   { 
-    this.reloadData();
+    super("manage/articles", dataService, matDialog, matSnackBar);
   }
 
   ngOnInit() {
-  }
-
-  onPageChange(event){
-    this.pageIndex = event["pageIndex"];
-    this.pageStart = event["pageIndex"] + 1;
-    this.pageSize = event["pageSize"];
-    this.reloadData();
-  }
-
-  onDelete(id: number){
-    const dialogRef = this.dialog.open(ConfirmDeleteComponent);
-    dialogRef.afterClosed().subscribe(isConfirmed => {
-      if(isConfirmed){
-        this.isLoading = true;
-        this.http.delete(this.resource, id).subscribe(res => {
-          this.snackBar.open("Delete success!", null, {
-            verticalPosition: "top",
-            horizontalPosition: "right",
-            duration: 3000
-          });
-          this.reloadData();
-        });
-      }
-    });
-  }
-
-  private reloadData(){
-    this.isLoading = true;
-    this.http.list(this.resource, this.pageStart, this.pageSize).subscribe(res => {  
-      this.dataSource = res["articles"];
-      this.dataLength = res["count"];
-      this.isLoading = false;
-    });
+    
   }
 }

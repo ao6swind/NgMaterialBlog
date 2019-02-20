@@ -33,7 +33,7 @@ namespace Backend.Manage.Controllers
             _delay.Wait();
             
             return Ok(new {
-                articles = _context.Articles
+                data = _context.Articles
                     .Skip((page - 1) * size)
                     .Take(size)
                     .OrderByDescending(x => x.Id)
